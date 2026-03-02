@@ -47,55 +47,129 @@ graph TD
     end
 ```
 
-🧩 What Makes This "Agentic"?
+## 🧩 What Makes This "Agentic"?
+
 Unlike standard LLM chains, this system introduces behaviors that define true agentic design:
-Role Specialization: Agents have distinct personas, constraints, and rubrics.
-Reflective Reasoning: The system critiques its own output and performs targeted revisions.
-Bounded Autonomy: Logic-gated loops (max 2 iterations) prevent infinite loops and control costs.
-State Management: The Orchestrator tracks document evolution across multiple rounds.
-Observability: Every decision and score is logged as a timestamped JSON for auditing.
+
+### 🔹 Role Specialization
+Agents have distinct personas, constraints, and rubrics:
+- **Student Agent** → Drafts research papers
+- **Professor Agent** → Evaluates using academic rubric
+- **Orchestrator** → Manages workflow & state
+
+### 🔹 Reflective Reasoning
+The system critiques its own output and performs targeted revisions based on feedback.
+
+### 🔹 Bounded Autonomy
+Logic-gated loops (max **2 iterations**) prevent infinite loops and ensure cost predictability.
+
+### 🔹 State Management
+The Orchestrator tracks document evolution across multiple rounds.
+
+### 🔹 Observability
+Every decision and score is logged as timestamped JSON for auditing and analysis.
+
+---
+
+## 🔁 Execution Flow
+
+1. **Input**  
+   User submits a research topic via the Telegram Bot.
+
+2. **Context Retrieval**  
+   Orchestrator retrieves relevant keywords from the Memory Layer.
+
+3. **Drafting**  
+   Student Agent generates the first version of the paper.
+
+4. **Critique**  
+   Professor Agent evaluates the draft using a formal academic rubric.
+
+5. **Iteration**  
+   If feedback = `REVISE`, Student Agent updates the paper.
+
+6. **Termination**  
+   Loop ends when:
+   - Professor approves, OR
+   - 2-iteration cap is reached.
+
+7. **Finalization**  
+   System logs metadata, updates memory, and returns final output.
+
+---
+
+## 📊 Execution Metadata
+
+Each run generates a timestamped log containing:
+
+| Metric | Description |
+|--------|------------|
+| **Quality Score** | Numerical evaluation (1–10) by Professor Agent |
+| **Iteration Count** | Total revision rounds |
+| **Latency** | Execution time in seconds |
+| **Memory Sync** | Keywords extracted for future context |
+| **Model** | LLM used (e.g., Llama-3.1-8B via Groq) |
+
+---
+
+## 🛠 Installation & Setup
+
+### 1️⃣ Clone the Repository    
+git clone https://github.com/nishb2715/agentic-multi-agent-ai-system
+cd agentic-multi-agent-ai-system
 
 
-🔁 Execution Flow
-Input: User submits a research topic via Telegram.
-Context: Orchestrator retrieves relevant keywords from the Memory Layer.
-Drafting: The Student Agent generates the first version of the paper.
-Critique: The Professor Agent evaluates the draft against an academic rubric.
-Iteration: If feedback is "REVISE", the Student Agent receives the critique and updates the paper.
-Termination: The loop ends when the Professor approves or the 2-iteration cap is reached.
-Finalization: The system logs metadata, updates memory, and delivers the final result.
+###2️⃣ Install Dependencies
+pip install -r requirements.txt
 
-
-📊 Execution MetadataEvery run is captured in a timestamped log to track performance:
-MetricDescriptionQuality ScoreNumerical evaluation (1-10) provided by the Professor AgentIteration CountTotal number of revision rounds performedLatencyTotal execution time in secondsMemory SyncKeywords extracted for future contextual relevanceModelThe specific LLM used (e.g., Llama-3.1-8b via Groq)
-
-
-🛠 Installation & Setup
-1. Clone the RepositoryBashgit clone [multi-agent-research-system]((https://github.com/nishb2715/agentic-multi-agent-ai-system))
-2. cd multi-agent-research-system
-3. Install DependenciesBashpip install -r requirements.txt
-4. Environment ConfigurationCreate a .env file in the root directory:Code snippetGROQ_API_KEY=your_groq_api_key
+###3️⃣ Environment Configuration
+Create a .env file in the root directory:
+GROQ_API_KEY=your_groq_api_key
 TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-5. Run the SystemBashpython -m bot.student_bot
 
 
-OR just access the bot at - [tg_bot](t.me/ReseachAgent_bot)
+###4️⃣ Run the System
+python -m bot.student_bot
 
 
-⚠️ Known LimitationsNo Tool Use:
-Currently lacks live web search capabilities (No RAG).
-Keyword Memory: Uses JSON storage instead of a Vector Database (FAISS/Pinecone).Stateless 
-Agents: Agents do not "remember" sessions; the Orchestrator handles all state.
+##🤖 Live Demo
 
-🏗 Scalability Roadmap
-[ ] Vector Memory: Transition to semantic retrieval for better context injection.
-[ ] RAG Integration: Add a Search Tool (Tavily or Serper) for real-time data.
-[ ] Multi-Model Routing: Use Llama-3.1-70b for evaluation and 8b for drafting.
-[ ] Containerization: Full Docker support for cloud-ready deployment.
+👉 Access the Telegram bot:
+[https://t.me/ResearchAgent_bot](https://t.me/ReseachAgent_bot)
 
 
-💡 Use Cases
-Academic Drafting: Rapidly generating literature reviews and outlines.
-Enterprise QA: Autonomous quality assurance for technical documentation.
-Legal Memos: Drafting and internal peer-reviewing of legal summaries.
-Content Strategy: Structured whitepaper generation with built-in editorial oversight.
+##⚠️ Known Limitations
+
+###❌ No live web search (RAG not integrated yet)
+
+###📦 Keyword memory uses JSON instead of vector DB
+
+###🧠 Agents are stateless; Orchestrator manages memory
+
+##🏗 Scalability Roadmap
+
+### Vector Memory — FAISS / Pinecone semantic retrieval
+
+### RAG Integration — Tavily / Serper search tool
+
+ ###Multi-Model Routing — 70B for evaluation, 8B for drafting
+
+### Containerization — Docker for cloud deployment
+
+##💡 Use Cases
+
+###📚 Academic Drafting — Literature reviews & outlines
+
+###🏢 Enterprise QA — Documentation quality checks
+
+###⚖️ Legal Memos — Drafting & peer review
+
+###📈 Content Strategy — Structured whitepaper generation
+
+
+
+
+
+```bash
+git clone https://github.com/nishb2715/agentic-multi-agent-ai-system
+cd agentic-multi-agent-ai-system
