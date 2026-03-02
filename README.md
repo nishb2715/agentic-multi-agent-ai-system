@@ -71,11 +71,12 @@ MetricDescriptionQuality ScoreNumerical evaluation (1-10) provided by the Profes
 
 
 🛠 Installation & Setup
-1. Clone the RepositoryBashgit clone [multi-agent-research-system]([https://github.com/your-username/multi-agent-research-system.git](https://github.com/nishb2715/agentic-multi-agent-ai-system)) cd multi-agent-research-system
-2. Install DependenciesBashpip install -r requirements.txt
-3. Environment ConfigurationCreate a .env file in the root directory:Code snippetGROQ_API_KEY=your_groq_api_key
+1. Clone the RepositoryBashgit clone [multi-agent-research-system]((https://github.com/nishb2715/agentic-multi-agent-ai-system))
+2. cd multi-agent-research-system
+3. Install DependenciesBashpip install -r requirements.txt
+4. Environment ConfigurationCreate a .env file in the root directory:Code snippetGROQ_API_KEY=your_groq_api_key
 TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-4. Run the SystemBashpython -m bot.student_bot
+5. Run the SystemBashpython -m bot.student_bot
 
 
 OR just access the bot at - [tg_bot](t.me/ReseachAgent_bot)
