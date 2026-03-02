@@ -78,7 +78,7 @@ TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 4. Run the SystemBashpython -m bot.student_bot
 
 
-OR just access the bot at - t.me/ReseachAgent_bot
+OR just access the bot at - [tg_bot](t.me/ReseachAgent_bot)
 
 
 ⚠️ Known LimitationsNo Tool Use:
