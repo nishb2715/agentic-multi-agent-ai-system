@@ -1,0 +1,86 @@
+# ============================
+# 🐍 Python
+# ============================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ragent/
+.venv/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ============================
+# 🔐 Environment Variables
+# ============================
+.env
+.env.*
+*.env
+
+# ============================
+# 📁 Logs & Runtime Files
+# ============================
+logs/
+*.log
+
+# ============================
+# 💾 Memory Storage
+# ============================
+memory/memory_store.json
+memory/*.json
+
+# ============================
+# 📦 LLM Temporary Outputs
+# ============================
+*.json.tmp
+
+# ============================
+# 🧠 Jupyter Notebooks
+# ============================
+.ipynb_checkpoints/
+
+# ============================
+# 💻 IDE / Editor
+# ============================
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# ============================
+# 🖥 OS Files
+# ============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+
+
+# ============================
+# 🔒 Secrets
+# ============================
+*.pem
+*.key
+*.crt
+
+# ============================
+# 🧪 Testing Artifacts
+# ============================
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ============================
+# 📊 Temporary Files
+# ============================
+*.tmp
+*.bak
+*.swp
